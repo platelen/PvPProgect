@@ -939,9 +939,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47270f3a6006054c92ae34b3ca93993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputRoomName: {fileID: 0}
-  _createRoomButton: {fileID: 0}
-  _joinRoomButton: {fileID: 0}
+  _inputRoomName: {fileID: 711957337}
+  _createRoomButton: {fileID: 1089503691}
+  _joinRoomButton: {fileID: 868033140}
   _textLog: {fileID: 483434999}
 --- !u!4 &1079004958
 Transform:

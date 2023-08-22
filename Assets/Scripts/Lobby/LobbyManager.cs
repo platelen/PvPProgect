@@ -7,7 +7,7 @@ namespace Lobby
 {
     public class LobbyManager : MonoBehaviourPunCallbacks
     {
-        [SerializeField] private InputField _inputRoomName;
+        [SerializeField] private TMP_InputField _inputRoomName;
         [SerializeField] private Button _createRoomButton;
         [SerializeField] private Button _joinRoomButton;
         [SerializeField] private TextMeshProUGUI _textLog;
@@ -23,8 +23,8 @@ namespace Lobby
             PhotonNetwork.GameVersion = "1";
             PhotonNetwork.ConnectUsingSettings();
 
-            // _createRoomButton.onClick.AddListener(CreatedRoom);
-            // _joinRoomButton.onClick.AddListener(JoiningRoom);
+             _createRoomButton.onClick.AddListener(CreatedRoom);
+             _joinRoomButton.onClick.AddListener(JoiningRoom);
         }
 
         public override void OnConnectedToMaster()
@@ -50,5 +50,17 @@ namespace Lobby
             string roomName = _inputRoomName.text;
             PhotonNetwork.JoinRoom(roomName);
         }
+        
+        public override void OnCreatedRoom()
+        {
+            Log("Room created: " + PhotonNetwork.CurrentRoom.Name);
+        }
+
+        public override void OnJoinedRoom()
+        {
+            Log("Joined room: " + PhotonNetwork.CurrentRoom.Name);
+            PhotonNetwork.LoadLevel("Game");
+        }
+        
     }
 }

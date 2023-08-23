@@ -8,12 +8,12 @@ namespace Events
     {
         [SerializeField] private WorkingWithCoins _workingWithCoins;
         [SerializeField] private Slider _coinBar;
-
+        
         private void Update()
         {
             if (_coinBar.value >= _workingWithCoins.VictoryCoin)
             {
-                Debug.Log("Victory");
+               GlobalEventsManager.SendVictoryCoin();
             }
         }
 

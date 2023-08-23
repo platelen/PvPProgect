@@ -1,16 +1,18 @@
 using System.Collections;
+using Player;
 using UnityEngine;
 
 namespace Bullet
 {
     public class BulletController : MonoBehaviour
     {
-        [SerializeField] private float _damageBullet;
+        [SerializeField] private int _damageBullet = 10;
         [SerializeField] private float _destroyDelay = 3f;
+
 
         private void Start()
         {
-            StartCoroutine(DestroyObjectAfterDelay());
+            //StartCoroutine(DestroyObjectAfterDelay());
         }
 
         private IEnumerator DestroyObjectAfterDelay()
@@ -23,6 +25,13 @@ namespace Bullet
         {
             if (col.CompareTag("Player"))
             {
+                HealthPlayer healthPlayer = col.gameObject.GetComponent<HealthPlayer>();
+                if (healthPlayer != null)
+                {
+                    Debug.Log("Работаем");
+                    healthPlayer.TakeDamage(_damageBullet);
+                }
+
                 Destroy(gameObject);
             }
         }

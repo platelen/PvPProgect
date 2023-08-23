@@ -15,6 +15,7 @@ namespace Player
 
         private void Start()
         {
+            _joystick = FindObjectOfType<Joystick>();
             _rb = GetComponent<Rigidbody2D>();
         }
 

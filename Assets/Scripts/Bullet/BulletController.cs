@@ -12,7 +12,7 @@ namespace Bullet
 
         private void Start()
         {
-            //StartCoroutine(DestroyObjectAfterDelay());
+            StartCoroutine(DestroyObjectAfterDelay());
         }
 
         private IEnumerator DestroyObjectAfterDelay()

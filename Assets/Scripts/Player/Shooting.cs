@@ -29,7 +29,7 @@ namespace Player
             _isShoot = true;
             GameObject bullet = Instantiate(_bullet, _startBullet.position, _startBullet.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(_startBullet.up * _bulletForce, ForceMode2D.Impulse);
+            rb.AddForce(_startBullet.right * _bulletForce, ForceMode2D.Impulse);
             _isShoot = false;
         }
     }

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace Player
@@ -8,6 +9,7 @@ namespace Player
         [SerializeField] private float _rotationSpeed = 100f;
         [SerializeField] private Joystick _joystick;
 
+        private PhotonView _photonView;
         private Animation _anim;
         private Vector2 _movement;
         private Rigidbody2D _rb;
@@ -15,12 +17,15 @@ namespace Player
 
         private void Start()
         {
+            _photonView = GetComponent<PhotonView>();
             _joystick = FindObjectOfType<Joystick>();
             _rb = GetComponent<Rigidbody2D>();
         }
 
         private void Update()
         {
+            if (!_photonView.IsMine) return;
+
             if (_joystick.Horizontal > 0)
             {
                 transform.localRotation = Quaternion.Euler(0, 0, 0);

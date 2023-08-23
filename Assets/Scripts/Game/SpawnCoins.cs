@@ -40,7 +40,7 @@ namespace Game
 
         private Vector3 RandomSpawnPos()
         {
-            return new Vector3(Random.Range(-_spawnAreaX, _spawnAreaX), -_spawnAreaY, _spawnAreaY);
+            return new Vector3(Random.Range(-_spawnAreaX, _spawnAreaX), Random.Range(-_spawnAreaY, _spawnAreaY));
         }
     }
 }

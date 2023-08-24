@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon.Realtime;
 
 namespace Lobby
 {
@@ -18,13 +19,13 @@ namespace Lobby
         {
             PhotonNetwork.NickName = "Player" + Random.Range(1000, 9999);
             Log("Player's name is set to " + PhotonNetwork.NickName);
-
+            
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.GameVersion = "1";
             PhotonNetwork.ConnectUsingSettings();
 
-             _createRoomButton.onClick.AddListener(CreatedRoom);
-             _joinRoomButton.onClick.AddListener(JoiningRoom);
+            _createRoomButton.onClick.AddListener(CreatedRoom);
+            _joinRoomButton.onClick.AddListener(JoiningRoom);
         }
 
         public override void OnConnectedToMaster()
@@ -50,7 +51,7 @@ namespace Lobby
             string roomName = _inputRoomName.text;
             PhotonNetwork.JoinRoom(roomName);
         }
-        
+
         public override void OnCreatedRoom()
         {
             Log("Room created: " + PhotonNetwork.CurrentRoom.Name);
@@ -61,6 +62,5 @@ namespace Lobby
             Log("Joined room: " + PhotonNetwork.CurrentRoom.Name);
             PhotonNetwork.LoadLevel("Game");
         }
-        
     }
 }

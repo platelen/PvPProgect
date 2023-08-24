@@ -1,4 +1,5 @@
 using System.Collections;
+using Photon.Pun;
 using Player;
 using UnityEngine;
 
@@ -9,9 +10,11 @@ namespace Bullet
         [SerializeField] private int _damageBullet = 10;
         [SerializeField] private float _destroyDelay = 3f;
 
-
+        private PhotonView _photonView;
+        
         private void Start()
         {
+            _photonView = GetComponent<PhotonView>();
             StartCoroutine(DestroyObjectAfterDelay());
         }
 

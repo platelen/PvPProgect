@@ -8,10 +8,12 @@ namespace Player
         [SerializeField] private float _speed = 10f;
         [SerializeField] private Joystick _joystick;
 
+
         private PhotonView _photonView;
         private Animation _anim;
         private Vector2 _movement;
         private Rigidbody2D _rb;
+
         private bool _isGame;
 
         private void Start()

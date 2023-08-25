@@ -177,8 +177,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1196250439}
   - component: {fileID: 1196250440}
+  - component: {fileID: 8744186125817773841}
   m_Layer: 0
-  m_Name: idle_0
+  m_Name: sprite_View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,6 +252,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8744186125817773841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196250438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd7c29573a84cd8aa399f4936646436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _photonView: {fileID: -4617139667612649437}
+  _otherPlayerSprites: {fileID: 21300000, guid: 4cd15657fd98a8544a65ed77810c98ef, type: 3}
 --- !u!1 &1426190945
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,16 +1,17 @@
-﻿using UnityEngine;
-using Photon.Pun;
-using Photon.Realtime;
+﻿using Photon.Pun;
+using UnityEngine;
 
-public class GameSystem : MonoBehaviourPunCallbacks
+namespace Lobby
 {
-    [SerializeField] private GameObject _player;
-    [SerializeField] private Transform _spawn;
-
-    public void Start()
+    public class GameSystem : MonoBehaviourPunCallbacks
     {
-        PhotonNetwork.Instantiate(_player.name,
-            new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f)),
-            Quaternion.identity);
+        [SerializeField] private GameObject _player;
+
+        public void Start()
+        {
+            PhotonNetwork.Instantiate(_player.name,
+                new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f)),
+                Quaternion.identity);
+        }
     }
 }

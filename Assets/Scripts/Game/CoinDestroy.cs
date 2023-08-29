@@ -9,8 +9,7 @@ namespace Game
     {
         [SerializeField] private int _addScore;
         [SerializeField] private float _destroyDelay = 5f;
-
-        private PhotonView _photonView;
+        [SerializeField] private PhotonView _photonView;
 
         private void Start()
         {
@@ -40,7 +39,7 @@ namespace Game
         private void DestroyCoin()
         {
             //if (_photonView.IsMine)
-                PhotonNetwork.Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }

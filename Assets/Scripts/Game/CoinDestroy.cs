@@ -20,9 +20,8 @@ namespace Game
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.CompareTag("Player"))
+            if (col.CompareTag("Player") && _photonView.IsMine)
             {
-                //if (!_photonView.IsMine) return;
                 GlobalEventsManager.SendAddingScore(_addScore);
                 DestroyCoin();
             }
@@ -33,16 +32,15 @@ namespace Game
             yield return new WaitForSeconds(_destroyDelay);
             if (_photonView.IsMine)
             {
-                PhotonNetwork.Destroy(gameObject);
+                _photonView.RPC("DestroyCoin", RpcTarget.MasterClient);
             }
         }
 
+        [PunRPC]
         private void DestroyCoin()
         {
             if (_photonView.IsMine)
-            {
                 PhotonNetwork.Destroy(gameObject);
-            }
         }
     }
 }

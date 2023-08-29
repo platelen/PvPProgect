@@ -28,19 +28,20 @@ namespace Player
         {
             _photonView.RPC("TakeDamageRPC", RpcTarget.All, damage);
         }
-        
+
         [PunRPC]
         public void TakeDamageRPC(int damage)
         {
             _currentHealth -= damage;
             _hpBar.SetHpBar(_currentHealth);
         }
-        
+
         private void KilledPlayer()
         {
             if (_currentHealth <= 0)
             {
-                Destroy(gameObject);
+                if (_photonView.IsMine)
+                    PhotonNetwork.Destroy(gameObject);
             }
         }
     }

@@ -1,4 +1,5 @@
 using System;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Player
@@ -8,6 +9,9 @@ namespace Player
         [SerializeField] private HpBar _hpBar;
         [SerializeField] private int _maxHealth = 100;
         [SerializeField] private int _currentHealth;
+
+        [SerializeField] private PhotonView _photonView;
+
 
         private void Start()
         {
@@ -22,10 +26,16 @@ namespace Player
 
         public void TakeDamage(int damage)
         {
+            _photonView.RPC("TakeDamageRPC", RpcTarget.All, damage);
+        }
+        
+        [PunRPC]
+        public void TakeDamageRPC(int damage)
+        {
             _currentHealth -= damage;
             _hpBar.SetHpBar(_currentHealth);
         }
-
+        
         private void KilledPlayer()
         {
             if (_currentHealth <= 0)

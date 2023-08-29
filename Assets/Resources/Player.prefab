@@ -848,6 +848,7 @@ MonoBehaviour:
   _hpBar: {fileID: 978367882}
   _maxHealth: 100
   _currentHealth: 0
+  _photonView: {fileID: -4617139667612649437}
 --- !u!114 &978367882
 MonoBehaviour:
   m_ObjectHideFlags: 0

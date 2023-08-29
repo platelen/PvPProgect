@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addScore: 1
+  _destroyDelay: 5
 --- !u!114 &4160322797216302666
 MonoBehaviour:
   m_ObjectHideFlags: 0

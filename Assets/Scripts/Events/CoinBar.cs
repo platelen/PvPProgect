@@ -1,4 +1,5 @@
 using System;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,23 @@ namespace Events
     {
         [SerializeField] private WorkingWithCoins _workingWithCoins;
         [SerializeField] private Slider _coinBar;
+
+        private PhotonView _photonView;
+        private float _syncValue;
         
+        private void Awake()
+        {
+            _photonView = GetComponent<PhotonView>();
+        }
+
+        // private void Start()
+        // {
+        //     if (_photonView.IsMine)
+        //     {
+        //         //_coinBar.interactable = false;
+        //     }
+        // }
+
         private void Update()
         {
             if (_coinBar.value >= _workingWithCoins.VictoryCoin)

@@ -11,7 +11,7 @@ namespace Bullet
         [SerializeField] private float _destroyDelay = 3f;
 
         private PhotonView _photonView;
-        
+
         private void Start()
         {
             _photonView = GetComponent<PhotonView>();
@@ -31,11 +31,10 @@ namespace Bullet
                 HealthPlayer healthPlayer = col.gameObject.GetComponent<HealthPlayer>();
                 if (healthPlayer != null)
                 {
-                    Debug.Log("Работаем");
                     healthPlayer.TakeDamage(_damageBullet);
                 }
 
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
         }
     }

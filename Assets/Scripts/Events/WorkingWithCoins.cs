@@ -1,4 +1,5 @@
 using System;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Events
     {
         [SerializeField] private CoinBar _coinBar;
         [SerializeField] private int _victoryCoin;
+        
         private int _intScore;
 
         public int VictoryCoin => _victoryCoin;
@@ -20,7 +22,7 @@ namespace Events
 
         private void AddingScore(int addingScore)
         {
-            _intScore += addingScore;   
+            _intScore += addingScore;
             _coinBar.SetCurrentBar(_intScore);
             GetComponent<TextMeshProUGUI>().text = "Coins: " + _intScore;
         }

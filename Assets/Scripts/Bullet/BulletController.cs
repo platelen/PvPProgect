@@ -21,7 +21,7 @@ namespace Bullet
         private IEnumerator DestroyObjectAfterDelay()
         {
             yield return new WaitForSeconds(_destroyDelay);
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
 
         private void OnTriggerEnter2D(Collider2D col)
@@ -34,6 +34,14 @@ namespace Bullet
                     healthPlayer.TakeDamage(_damageBullet);
                 }
 
+                DestroyBullet();
+            }
+        }
+
+        private void DestroyBullet()
+        {
+            if (_photonView.IsMine)
+            {
                 PhotonNetwork.Destroy(gameObject);
             }
         }

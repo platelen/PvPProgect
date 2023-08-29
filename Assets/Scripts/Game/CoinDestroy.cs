@@ -20,6 +20,14 @@ namespace Game
             {
                 //if (!_photonView.IsMine) return;
                 GlobalEventsManager.SendAddingScore(_addScore);
+                DestroyCoin();
+            }
+        }
+
+        private void DestroyCoin()
+        {
+            if (_photonView.IsMine)
+            {
                 PhotonNetwork.Destroy(gameObject);
             }
         }

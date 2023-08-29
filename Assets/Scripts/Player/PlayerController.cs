@@ -21,20 +21,12 @@ namespace Player
             _photonView = GetComponent<PhotonView>();
             _joystick = FindObjectOfType<Joystick>();
             _rb = GetComponent<Rigidbody2D>();
+            ToggleControls(false);
         }
 
         private void Update()
         {
             if (!_photonView.IsMine) return;
-
-            // if (PhotonNetwork.CountOfPlayersInRooms < 2)
-            // {
-            //     _isGame = false;
-            // }
-            // else if (PhotonNetwork.CountOfPlayersInRooms >= 2)
-            // {
-            //     _isGame = true;
-            // }
 
             if (_joystick.Horizontal > 0)
             {
@@ -48,11 +40,18 @@ namespace Player
 
             Vector2 moveInput = new Vector2(_joystick.Horizontal, _joystick.Vertical);
             _movement = moveInput.normalized * _speed;
+
+            ToggleControls(PhotonNetwork.CurrentRoom.PlayerCount > 1);
         }
 
         private void FixedUpdate()
         {
             _rb.MovePosition(_rb.position + _movement * Time.deltaTime);
+        }
+
+        private void ToggleControls(bool isEnabled)
+        {
+            _joystick.enabled = isEnabled;
         }
     }
 }

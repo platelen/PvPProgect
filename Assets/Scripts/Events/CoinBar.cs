@@ -1,4 +1,3 @@
-using System;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,25 +11,17 @@ namespace Events
 
         private PhotonView _photonView;
         private float _syncValue;
-        
+
         private void Awake()
         {
             _photonView = GetComponent<PhotonView>();
         }
 
-        // private void Start()
-        // {
-        //     if (_photonView.IsMine)
-        //     {
-        //         //_coinBar.interactable = false;
-        //     }
-        // }
-
         private void Update()
         {
             if (_coinBar.value >= _workingWithCoins.VictoryCoin)
             {
-               GlobalEventsManager.SendVictoryCoin();
+                GlobalEventsManager.SendVictoryCoin();
             }
         }
 

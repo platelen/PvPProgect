@@ -39,7 +39,7 @@ namespace Game
         [PunRPC]
         private void DestroyCoin()
         {
-            if (_photonView.IsMine)
+            //if (_photonView.IsMine)
                 PhotonNetwork.Destroy(gameObject);
         }
     }
